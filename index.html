@@ -1,6 +1,7 @@
 <head>
 <title>Wormle</title>
 <link rel="stylesheet" href="main.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div id = 'wrapper'>
@@ -31,7 +32,6 @@
             let randomIndex = Math.floor(Math.random() * dict.length);
             chosenWord = dict[randomIndex];
             chosenWordIndex = randomIndex;
-            console.log(chosenWord);
         }
 
         rollChosenWord();
@@ -69,7 +69,6 @@
             submitButton.addEventListener('click', () => {
                 if(!isNaN(codeBox.value) && codeBox.value >= 0 && codeBox.value < dict.length){
                     chosenWord = dict[codeBox.value];
-                    console.log(chosenWord);
                     loop();
                 }else{
                     console.log('invalid code dumbass');
@@ -190,8 +189,7 @@
             }
             
             if(!wordFound){
-                console.log(currWord);
-                console.log('NOT A REL WORD DUM DUM');
+                alert('This is not a real English word!');
             }
 
             wordFound = false;      
@@ -212,9 +210,8 @@
             document.onkeydown = function (e) {
                 e = e || window.event;
                 if(!e.repeat && gamestate == 'playing' &&  document.activeElement != document.getElementById("codeBox")){
-                    console.log(gamestate);
                     if(e.keyCode == 13 && currLetter < LETTERS){
-                        console.log("NOT LETTERS");
+                        alert("Not enough letters!");
                     }else if(e.keyCode == 13){
                         if(submitWord(currWord)){
                             currWord = "";
